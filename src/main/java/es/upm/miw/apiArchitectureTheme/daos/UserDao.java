@@ -1,5 +1,11 @@
 package es.upm.miw.apiArchitectureTheme.daos;
 
-public class UserDao {
+import java.util.List;
+
+import es.upm.miw.apiArchitectureTheme.entities.*;
+
+public interface UserDao extends GenericDao<User, Integer>{
+	
+    List<String> findAllWhoPracticeAnySport(String sportName);
 
 }
