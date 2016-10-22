@@ -2,6 +2,8 @@ package es.upm.miw.apiArchitectureTheme.entities;
 
 public class User {
 	
+	private int id;
+	
 	private String nick;
 	
 	private String email;
@@ -17,6 +19,16 @@ public class User {
 	{
 		this.nick=nick;
 		this.email=email;
+	}
+	
+	public int getId()
+	{
+		return this.id;
+	}
+	
+	public void setId(int id)
+	{
+		this.id=id;
 	}
 	
 	public void setNick(String nick)

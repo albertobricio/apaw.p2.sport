@@ -2,7 +2,6 @@ package es.upm.miw.apiArchitectureTheme.controllers;
 
 import es.upm.miw.apiArchitectureTheme.daos.*;
 import es.upm.miw.apiArchitectureTheme.entities.*;
-import es.upm.miw.apiArchitectureTheme.wrappers.*;
 
 public class SportController {
 	
