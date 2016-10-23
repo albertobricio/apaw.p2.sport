@@ -38,4 +38,14 @@ public class UserController {
 		DaoFactory.getFactory().getUserDao().putSport(nick,sportName);
 	}
 
+	public boolean isCreatedNick(String nick) {
+		List<User> users = DaoFactory.getFactory().getUserDao().findAll();
+		for(User user:users)
+		{
+			if(user.getNick().equals(nick))
+				return true;
+		}
+		return false;
+	}
+
 }

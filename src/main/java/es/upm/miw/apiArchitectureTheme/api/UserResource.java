@@ -1,16 +1,18 @@
 package es.upm.miw.apiArchitectureTheme.api;
 
 import es.upm.miw.apiArchitectureTheme.controllers.*;
+import es.upm.miw.apiArchitectureTheme.exceptions.InvalidNicknameException;
 import es.upm.miw.apiArchitectureTheme.exceptions.InvalidUserFieldException;
 import es.upm.miw.apiArchitectureTheme.wrappers.*;
 
 public class UserResource {
 	
 	//POST **/users body=nick:email
-	public void createUser(String nick, String email) throws InvalidUserFieldException
+	public void createUser(String nick, String email) throws InvalidUserFieldException, InvalidNicknameException
 	{
 		this.validateField(nick);
 		this.validateField(email);
+		this.validateNick(nick);
 		new UserController().createUser(nick,email);
 	}
 	
@@ -19,6 +21,14 @@ public class UserResource {
 		if (field == null || field.isEmpty()){
 			throw new InvalidUserFieldException();
 		}
+	}
+	
+	private void validateNick(String nick) throws InvalidNicknameException 
+	{
+		if(new UserController().isCreatedNick(nick))
+		{
+			throw new InvalidNicknameException(nick);
+		}			
 	}
 	
 	//PUT **/users/{nick}/sport body=sportName
