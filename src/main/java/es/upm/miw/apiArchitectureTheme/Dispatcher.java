@@ -3,7 +3,7 @@ package es.upm.miw.apiArchitectureTheme;
 import es.upm.miw.apiArchitectureTheme.api.SportResource;
 import es.upm.miw.apiArchitectureTheme.api.UserResource;
 import es.upm.miw.apiArchitectureTheme.exceptions.InvalidRequestException;
-import es.upm.miw.apiArchitectureTheme.exceptions.InvalidThemeFieldException;
+import es.upm.miw.apiArchitectureTheme.exceptions.InvalidSportFieldException;
 import es.upm.miw.web.http.HttpRequest;
 import es.upm.miw.web.http.HttpResponse;
 import es.upm.miw.web.http.HttpStatus;

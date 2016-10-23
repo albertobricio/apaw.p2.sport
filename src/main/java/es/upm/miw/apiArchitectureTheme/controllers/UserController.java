@@ -18,14 +18,14 @@ public class UserController {
 		return userListWrapper;
 	}
 	
-	public UserListWrapper userListBySport(String sportName)
+	public NickListWrapper userListBySport(String sportName)
 	{
 		List<User> userList = DaoFactory.getFactory().getUserDao().findAllWhoPracticeAnySport(sportName);
-		UserListWrapper userListWrapper = new UserListWrapper();
+		NickListWrapper nickListWrapper = new NickListWrapper();
 		for (User user : userList) {
-			userListWrapper.addUserWrapper(new UserWrapper(user.getNick(), user.getEmail()));
+			nickListWrapper.addNickWrapper(new NickWrapper(user.getNick()));
 		}
-		return userListWrapper;
+		return nickListWrapper;
 	}
 	
 	public void createUser(String nick, String email)
