@@ -10,7 +10,6 @@ public class UserResource {
 	public void createUser(String nick, String email) throws InvalidUserFieldException
 	{
 		this.validateField(nick);
-		this.existNick(nick);
 		this.validateField(email);
 		new UserController().createUser(nick,email);
 	}
@@ -22,25 +21,13 @@ public class UserResource {
 		}
 	}
 	
-	private void existNick (String nick)
-	{
-		
-	}
-	
 	//PUT **/users/{nick}/sport body=sportName
 	public void putSportToUser(String nick, String sportName) throws InvalidUserFieldException
 	{
 		this.validateField(nick);
 		this.validateField(sportName);
-		this.existSport(sportName);
 		new UserController().putSportToUser(nick,sportName);
 	}
-	
-	private void existSport(String sportName)
-	{
-		
-	}
-
 	
 	//GET **/users
 	public UserListWrapper userList()
@@ -49,7 +36,7 @@ public class UserResource {
 	}
 	
 	//GET **/users/search?sport=*
-	public UserListWrapper userListBySport(String sportName)
+	public NickListWrapper nickListBySport(String sportName)
 	{
 		return new UserController().userListBySport(sportName);
 	}

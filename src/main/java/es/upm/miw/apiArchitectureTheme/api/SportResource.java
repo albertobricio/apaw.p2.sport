@@ -9,7 +9,6 @@ public class SportResource {
 	public void createSport(String name) throws InvalidSportFieldException
 	{
 		this.validateField(name);
-		this.existSport(name);
 		new SportController().createSport(name);
 	}
 	
@@ -20,10 +19,5 @@ public class SportResource {
 			throw new InvalidSportFieldException(field);
 		}
 	}
-	
-	private void existSport(String name)
-	{
-		
-	}
-	
+
 }

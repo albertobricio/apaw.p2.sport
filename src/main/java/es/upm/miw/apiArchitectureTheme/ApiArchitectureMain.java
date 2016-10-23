@@ -13,51 +13,58 @@ public class ApiArchitectureMain {
 	private HttpRequest request = new HttpRequest();
 
 	public void help() {
-		System.out.println("GET **/themes");
-		System.out.println("POST **/themes   body=\"themeName\"");
-		System.out.println("GET **/themes/{id}/overage");
-		System.out.println("POST **/votes   body=\"themeId:vote\"");
-		System.out.println("GET **/votes");
+		System.out.println("##############AYUDA######################");
+		System.out.println("POST **/users   body=nick:email");
+		System.out.println("POST **/sports   body=name");
+		System.out.println("PUT **/users/{nick}/sport   body:sportName");
+		System.out.println("GET **/users");
+		System.out.println("GET **/users/search?sport=*");
 		System.out.println("#########################################");
 	}
 
 	public void demo() {
 		request.setMethod(HttpMethod.POST);
-		request.setPath("themes");
-		request.setBody("uno");
+		request.setPath("users");
+		request.setBody("uno:uno@gmail.com");
 		this.request();
-		request.setBody("dos");
+		request.setBody("dos:dos@gmail.com");
 		this.request();
-		request.setPath("votes");
-		request.setBody("1:4");
-		this.request();
-		request.setBody("1:5");
-		this.request();
-		request.setBody("2:5");
-		this.request();
-		request.setBody("2:6");
+		request.setBody("uno:tres@gmail.com");
 		this.request();
 		request.setMethod(HttpMethod.GET);
-		request.setPath("votes");
+		request.setPath("users");
 		request.clearQueryParams();
 		request.setBody("");
 		this.request();
-		request.setPath("themes");
+		request.setMethod(HttpMethod.POST);
+		request.setPath("sports");
+		request.setBody("tenis");
 		this.request();
-		request.setPath("themes/1/overage");
+		request.setBody("tenis");
 		this.request();
-		request.setPath("themes/2/overage");
+		request.setBody("ajedrez");
 		this.request();
-		//Exceptions
-		request.setPath("noValid");
+		request.setMethod(HttpMethod.PUT);
+		request.setPath("users/uno/sport");
+		request.setBody("tenis");
 		this.request();
-		request.setPath("themes/x/overage");
+		request.setPath("users/uno/sport");
+		request.clearQueryParams();
 		this.request();
-		request.setPath("themes/99/overage");
+		request.setPath("users/dos/sport");
+		request.setBody("tenis");
+		this.request();
+		request.setPath("users/dos/sport");
+		request.setBody("ajedrez");
+		this.request();
+		request.setMethod(HttpMethod.GET);
+		request.setPath("users/search?sport=tenis");
+		request.clearQueryParams();
+		request.setBody("");
 		this.request();
 		request.setMethod(HttpMethod.POST);
-		request.setPath("votes");
-		request.setBody("99:4");
+		request.clearQueryParams();
+		request.setBody("");
 		this.request();
 	}
 

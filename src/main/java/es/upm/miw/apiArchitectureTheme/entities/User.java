@@ -1,5 +1,7 @@
 package es.upm.miw.apiArchitectureTheme.entities;
 
+import java.util.List;
+
 public class User {
 	
 	private int id;
@@ -8,11 +10,9 @@ public class User {
 	
 	private String email;
 	
-	private Sport sport;
+	private List<Sport> sports;
 	
-	public User()
-	{
-		
+	public User(){
 	}
 	
 	public User(String nick, String email)
@@ -51,14 +51,19 @@ public class User {
 		return this.email;
 	}
 	
-	public void setSport(Sport sport)
+	public void setSportList(List<Sport> sports)
 	{
-		this.sport=sport;
+		this.sports=sports;
 	}
 	
-	public Sport getSport()
+	public void putSportinList (Sport sport)
 	{
-		return this.sport;
+		this.sports.add(sport);
+	}
+	
+	public List<Sport> getSportList()
+	{
+		return this.sports;
 	}
 	
 }

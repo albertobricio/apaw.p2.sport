@@ -23,10 +23,10 @@ public class Dispatcher {
 		if ("users".equals(request.getPath())) {
 			response.setBody(userResource.userList().toString());
 			// **/users/search?sport=*
-		} else if ("themes".equals(request.paths()[0]) && request.paths()[1].startsWith("search?sport=")) {
+		} else if ("users".equals(request.paths()[0]) && request.paths()[1].startsWith("search?sport=")) {
 			try {
 				String sportName = request.paths()[1].split("=")[1];
-				response.setBody(userResource.userListBySport(sportName).toString());
+				response.setBody(userResource.nickListBySport(sportName).toString());
 			} catch (Exception e) {
 				responseError(response, e);
 			}
