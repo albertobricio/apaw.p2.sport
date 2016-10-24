@@ -5,7 +5,6 @@ import es.upm.miw.apiArchitectureTheme.daos.memory.DaoFactoryMemory;
 import es.upm.miw.web.http.HttpMethod;
 import es.upm.miw.web.http.HttpRequest;
 import es.upm.miw.web.http.HttpResponse;
-import upm.jbb.IO;
 
 public class ApiArchitectureMain {
 
@@ -14,91 +13,74 @@ public class ApiArchitectureMain {
 	private HttpRequest request = new HttpRequest();
 
 	public void help() {
-		IO.getIO().println("GET **/themes");
-		IO.getIO().println("POST **/themes   body=\"themeName\"");
-		IO.getIO().println("GET **/themes/{id}/overage");
-		IO.getIO().println("POST **/votes   body=\"themeId:vote\"");
-		IO.getIO().println("GET **/votes");
+		System.out.println("##############AYUDA######################");
+		System.out.println("POST **/users   body=nick:email");
+		System.out.println("POST **/sports   body=name");
+		System.out.println("PUT **/users/{nick}/sport   body:sportName");
+		System.out.println("GET **/users");
+		System.out.println("GET **/users/search?sport=*");
+		System.out.println("#########################################");
 	}
 
 	public void demo() {
 		request.setMethod(HttpMethod.POST);
-		request.setPath("themes");
-		request.setBody("uno");
+		request.setPath("users");
+		request.setBody("uno:uno@gmail.com");
 		this.request();
-		request.setBody("dos");
+		request.setBody("dos:dos@gmail.com");
 		this.request();
-		request.setPath("votes");
-		request.setBody("1:4");
-		this.request();
-		request.setBody("1:5");
-		this.request();
-		request.setBody("2:5");
-		this.request();
-		request.setBody("2:6");
+		request.setBody("uno:tres@gmail.com");
 		this.request();
 		request.setMethod(HttpMethod.GET);
-		request.setPath("votes");
+		request.setPath("users");
 		request.clearQueryParams();
 		request.setBody("");
 		this.request();
-		request.setPath("themes");
+		request.setMethod(HttpMethod.POST);
+		request.setPath("sports");
+		request.setBody("tenis");
 		this.request();
-		request.setPath("themes/1/overage");
+		request.setBody("tenis");
 		this.request();
-		request.setPath("themes/2/overage");
+		request.setBody("ajedrez");
 		this.request();
-		//Exceptions
-		request.setPath("noValid");
+		request.setMethod(HttpMethod.PUT);
+		request.setPath("users/uno/sport");
+		request.setBody("tenis");
 		this.request();
-		request.setPath("themes/x/overage");
+		request.setPath("users/uno/sport");
+		request.setBody("");
+		request.clearQueryParams();
 		this.request();
-		request.setPath("themes/99/overage");
+		request.setPath("users/dos/sport");
+		request.setBody("tenis");
+		this.request();
+		request.setPath("users/dos/sport");
+		request.setBody("ajedrez");
+		this.request();
+		request.setMethod(HttpMethod.GET);
+		request.setPath("users/search?sport=tenis");
+		request.clearQueryParams();
+		request.setBody("");
 		this.request();
 		request.setMethod(HttpMethod.POST);
-		request.setPath("votes");
-		request.setBody("99:4");
-		this.request();
-	}
-
-	public void httpMethod() {
-		request.setMethod((HttpMethod) IO.getIO().select(HttpMethod.values(), "Elige método"));
-		this.showStatus();
-	}
-
-	public void path() {
-		request.setPath(IO.getIO().readString("Path"));
-		this.showStatus();
-	}
-
-	public void addQueryParam() {
-		String[] msgs = { "Nombre", "Valor" };
-		String[] campos = { "String", "String" };
-		Object[] values = IO.getIO().readForm(campos, msgs);
-		request.addQueryParam((String) values[0], (String) values[1]);
-		this.showStatus();
-	}
-
-	public void clearQueryParams() {
+		request.setPath("");
 		request.clearQueryParams();
-		this.showStatus();
-	}
-
-	private void showStatus() {
-		IO.getIO().setStatusBar(request.toString());
+		request.setBody("");
+		this.request();
 	}
 
 	public void request() {
-		IO.getIO().println(request.toString());
+		System.out.println(request.toString());
 		HttpResponse response = server.request(request);
-		IO.getIO().println(response);
-		IO.getIO().println("---------------------------------------ooo----------------------------------------");
+		System.out.println(response);
+		System.out.println("---------------------------------------ooo----------------------------------------");
 	}
 
 	public static void main(String[] args) {
 		ApiArchitectureMain main = new ApiArchitectureMain();
-		IO.getIO().addView(main);
-		main.showStatus();
 		DaoFactory.setFactory(new DaoFactoryMemory());
+		main.help();
+		main.demo();
 	}
 }
