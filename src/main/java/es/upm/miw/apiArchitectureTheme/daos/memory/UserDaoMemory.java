@@ -42,18 +42,4 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao{
 		entity.setId(id);
 	}
 
-	@Override
-	public void putSport(String nick, String sportName) {
-		List<User> users = this.findAll();
-		Sport newSport = new Sport(sportName);
-		for (User user : users)
-		{
-			if(user.getNick().equals(nick))
-			{
-				user.putSportinList(newSport);
-				break;
-			}
-		}
-	}
-
 }

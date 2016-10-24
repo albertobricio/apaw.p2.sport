@@ -49,6 +49,7 @@ public class ApiArchitectureMain {
 		request.setBody("tenis");
 		this.request();
 		request.setPath("users/uno/sport");
+		request.setBody("");
 		request.clearQueryParams();
 		this.request();
 		request.setPath("users/dos/sport");
@@ -63,6 +64,7 @@ public class ApiArchitectureMain {
 		request.setBody("");
 		this.request();
 		request.setMethod(HttpMethod.POST);
+		request.setPath("");
 		request.clearQueryParams();
 		request.setBody("");
 		this.request();

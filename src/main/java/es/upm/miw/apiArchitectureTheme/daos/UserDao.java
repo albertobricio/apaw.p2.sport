@@ -7,6 +7,4 @@ import es.upm.miw.apiArchitectureTheme.entities.*;
 public interface UserDao extends GenericDao<User, Integer>{
 	
     List<User> findAllWhoPracticeAnySport(String sportName);
-
-	void putSport(String nick, String sportName);
 }

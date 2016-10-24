@@ -1,5 +1,6 @@
 package es.upm.miw.apiArchitectureTheme.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -19,6 +20,7 @@ public class User {
 	{
 		this.nick=nick;
 		this.email=email;
+		this.sports=new ArrayList<Sport>();
 	}
 	
 	public int getId()
