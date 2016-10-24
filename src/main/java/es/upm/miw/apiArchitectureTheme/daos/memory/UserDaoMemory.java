@@ -8,8 +8,8 @@ import es.upm.miw.apiArchitectureTheme.daos.UserDao;
 import es.upm.miw.apiArchitectureTheme.entities.Sport;
 import es.upm.miw.apiArchitectureTheme.entities.User;
 
-public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao{
-	
+public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
+
 	public UserDaoMemory() {
 		this.setMap(new HashMap<Integer, User>());
 	}
@@ -19,11 +19,9 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao{
 		List<User> users = this.findAll();
 		List<User> sportUsers = new ArrayList<User>();
 		for (User user : users) {
-			List<Sport> sportList=user.getSportList();
-			for(Sport sport : sportList)
-			{
-				if(sport.getName().equals(sportName))
-				{
+			List<Sport> sportList = user.getSportList();
+			for (Sport sport : sportList) {
+				if (sport.getName().equals(sportName)) {
 					sportUsers.add(user);
 					break;
 				}

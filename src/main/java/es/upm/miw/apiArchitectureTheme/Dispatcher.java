@@ -8,7 +8,7 @@ import es.upm.miw.web.http.HttpResponse;
 import es.upm.miw.web.http.HttpStatus;
 
 public class Dispatcher {
-	
+
 	private SportResource sportResource = new SportResource();
 	private UserResource userResource = new UserResource();
 
@@ -51,7 +51,7 @@ public class Dispatcher {
 			String nick = request.getBody().split(":")[0];
 			String email = request.getBody().split(":")[1];
 			try {
-				userResource.createUser(nick,email);
+				userResource.createUser(nick, email);
 				response.setStatus(HttpStatus.CREATED);
 			} catch (Exception e) {
 				responseError(response, e);
@@ -64,7 +64,7 @@ public class Dispatcher {
 	}
 
 	public void doPut(HttpRequest request, HttpResponse response) {
-		//PUT /users/{nick}/sport body=sportName
+		// PUT /users/{nick}/sport body=sportName
 		if ("users".equals(request.paths()[0]) && "sport".equals(request.paths()[2])) {
 			try {
 				String nick = request.paths()[1];

@@ -7,9 +7,8 @@ import es.upm.miw.apiArchitectureTheme.entities.*;
 import es.upm.miw.apiArchitectureTheme.wrappers.*;
 
 public class UserController {
-	
-	public UserListWrapper userList()
-	{
+
+	public UserListWrapper userList() {
 		List<User> userList = DaoFactory.getFactory().getUserDao().findAll();
 		UserListWrapper userListWrapper = new UserListWrapper();
 		for (User user : userList) {
@@ -17,9 +16,8 @@ public class UserController {
 		}
 		return userListWrapper;
 	}
-	
-	public NickListWrapper userListBySport(String sportName)
-	{
+
+	public NickListWrapper userListBySport(String sportName) {
 		List<User> userList = DaoFactory.getFactory().getUserDao().findAllWhoPracticeAnySport(sportName);
 		NickListWrapper nickListWrapper = new NickListWrapper();
 		for (User user : userList) {
@@ -27,19 +25,15 @@ public class UserController {
 		}
 		return nickListWrapper;
 	}
-	
-	public void createUser(String nick, String email)
-	{
-		DaoFactory.getFactory().getUserDao().create(new User(nick,email));
+
+	public void createUser(String nick, String email) {
+		DaoFactory.getFactory().getUserDao().create(new User(nick, email));
 	}
-	
-	public void putSportToUser(String nick, String sportName)
-	{
+
+	public void putSportToUser(String nick, String sportName) {
 		List<User> users = DaoFactory.getFactory().getUserDao().findAll();
-		for(User user:users)
-		{
-			if(user.getNick().equals(nick))
-			{
+		for (User user : users) {
+			if (user.getNick().equals(nick)) {
 				Sport sport = new Sport(sportName);
 				user.putSportinList(sport);
 				DaoFactory.getFactory().getUserDao().update(user);
@@ -50,9 +44,8 @@ public class UserController {
 
 	public boolean isCreatedNick(String nick) {
 		List<User> users = DaoFactory.getFactory().getUserDao().findAll();
-		for(User user:users)
-		{
-			if(user.getNick().equals(nick))
+		for (User user : users) {
+			if (user.getNick().equals(nick))
 				return true;
 		}
 		return false;

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import es.upm.miw.apiArchitectureTheme.daos.SportDao;
 import es.upm.miw.apiArchitectureTheme.entities.Sport;
 
-public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao{
-	
+public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao {
+
 	public SportDaoMemory() {
 		this.setMap(new HashMap<Integer, Sport>());
 	}
